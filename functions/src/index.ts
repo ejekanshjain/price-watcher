@@ -21,6 +21,7 @@ export const scheduledFunction = functions
         ...product.data()
       })
     })
+    if (!finalData.length) return
     await Promise.all(
       finalData.map(async fd => {
         try {
