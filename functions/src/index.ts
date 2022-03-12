@@ -13,12 +13,12 @@ export const scheduledFunction = functions
   .onRun(async context => {
     const timestamp = new Date().toISOString()
     const db = admin.firestore()
-    const amazonProducts = await db.collection('amazon').get()
+    const products = await db.collection('products').get()
     const finalData: any[] = []
-    amazonProducts.forEach(ap => {
+    products.forEach(product => {
       finalData.push({
-        id: ap.id,
-        ...ap.data()
+        id: product.id,
+        ...product.data()
       })
     })
     await Promise.all(
